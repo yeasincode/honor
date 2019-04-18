@@ -4,16 +4,22 @@
  * This is a general purpose Gradle build.
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
+
+
+
 allprojects {
     repositories {
         jcenter()
     }
 }
+apply plugin:'java'
 
 subprojects {
     version = '1.0'
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
 }
 
-tasks.withType(JavaCompile) {  
-    options.encoding = "UTF-8"  
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
 }

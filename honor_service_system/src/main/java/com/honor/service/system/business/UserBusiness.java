@@ -2,6 +2,7 @@ package com.honor.service.system.business;
 
 import com.honor.api.UserApi;
 import com.honor.model.User;
+import org.springframework.stereotype.Component;
 
 /**
  * <pre>

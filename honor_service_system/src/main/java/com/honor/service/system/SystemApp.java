@@ -2,7 +2,11 @@ package com.honor.service.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
+
+import java.net.URL;
+
 
 /**
  * <pre>
@@ -26,11 +30,17 @@ import org.springframework.context.annotation.ImportResource;
  * </pre>
  */
 @SpringBootApplication
-@ImportResource(locations={"classpath*:*META-INF/spring-dubbo-provider.xml"})
+@ImportResource({"classpath:META-INF/spring-dubbo-provider.xml"})
 public class SystemApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(SystemApp.class,args);
+        SpringApplication.run(SystemApp.class, args);
+
+        try {
+            System.in.read();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
 
