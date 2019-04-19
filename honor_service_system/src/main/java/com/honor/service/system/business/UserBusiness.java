@@ -7,17 +7,17 @@ import org.springframework.stereotype.Component;
 /**
  * <pre>
  *
- *  BoShang Technology
+ *  Honor Technology
  *  File: UserBusiness
  *
- *  BoShang, Inc.
+ *  Honor, Inc.
  *  Copyright (C): 2019
  *
  *  Description:
  *  用户业务类
  *
  *  Notes:
- * 	$Id: UserBusiness 72642 2009-01-01 20:01:57Z BoShang\Administrator $
+ * 	$Id: UserBusiness 72642 2009-01-01 20:01:57Z Honor\Administrator $
  *
  *  Revision History
  *  &lt;Date&gt;,			&lt;Who&gt;,			&lt;What&gt;
@@ -25,6 +25,7 @@ import org.springframework.stereotype.Component;
  *
  * </pre>
  */
+@Component
 public class UserBusiness implements UserApi {
 
     @Override

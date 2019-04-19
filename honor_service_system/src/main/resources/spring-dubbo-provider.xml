@@ -6,7 +6,7 @@
        http://dubbo.apache.org/schema/dubbo https://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
     <dubbo:application name="honor_service_system"/>
-    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2181" check="false" wait="300000" file="dubbo-registry.cache" />
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2182" check="true" wait="300000" file="dubbo-registry.cache" />
     <bean id="userService" class="com.honor.service.system.business.UserBusiness"/>
     <dubbo:service interface="com.honor.api.UserApi" ref="userService"/>
 </beans>

@@ -5,21 +5,56 @@
  * Learn how to create Gradle builds at https://guides.gradle.org/creating-new-gradle-builds/
  */
 
-
+buildscript {
+    ext {
+        springBootVersion = '2.1.4.RELEASE'
+    }
+    repositories {
+        jcenter()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
 
 allprojects {
     repositories {
         jcenter()
     }
+
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
 }
-apply plugin:'java'
+
 
 subprojects {
     version = '1.0'
-    sourceCompatibility = 1.8
-    targetCompatibility = 1.8
+    apply plugin: 'java'
+
 }
 
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
+configure(subprojects.findAll { it.name.contains('_service_') }) {
+
+    apply plugin: 'org.springframework.boot'
+
+    dependencies {
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.4.RELEASE'
+    }
+
+    jar {
+        String appName = project.name.split('_').last().capitalize() + 'App'
+        String mainClass = "com.honor.service.system." + appName
+        print("build service jar:"+appName)
+        manifest {
+            attributes(
+                    "Manifest-Version": 1.0,
+                    "Main-Class": mainClass)
+        }
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+        into('assets') {
+            from 'assets'
+        }
+    }
 }
+

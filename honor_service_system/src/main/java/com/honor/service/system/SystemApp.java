@@ -2,26 +2,23 @@ package com.honor.service.system;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.ImportResource;
-
-import java.net.URL;
 
 
 /**
  * <pre>
  *
- *  BoShang Technology
+ *  Honor Technology
  *  File: SystemApp
  *
- *  BoShang, Inc.
+ *  Honor, Inc.
  *  Copyright (C): 2019
  *
  *  Description:
  *  System模块启动
  *
  *  Notes:
- * 	$Id: SystemApp 72642 2009-01-01 20:01:57Z BoShang\Administrator $
+ * 	$Id: SystemApp 72642 2009-01-01 20:01:57Z Honor\Administrator $
  *
  *  Revision History
  *  &lt;Date&gt;,			&lt;Who&gt;,			&lt;What&gt;
@@ -30,7 +27,7 @@ import java.net.URL;
  * </pre>
  */
 @SpringBootApplication
-@ImportResource({"classpath:META-INF/spring-dubbo-provider.xml"})
+@ImportResource({"classpath:spring-dubbo-provider.xml"})
 public class SystemApp {
 
     public static void main(String[] args) {

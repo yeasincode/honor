@@ -1,19 +1,21 @@
 package com.honor.model;
 
+import java.io.Serializable;
+
 /**
  * <pre>
  *
- *  BoShang Technology
+ *  Honor Technology
  *  File: User
  *
- *  BoShang, Inc.
+ *  Honor, Inc.
  *  Copyright (C): 2019
  *
  *  Description:
  *
  *
  *  Notes:
- * 	$Id: User 72642 2009-01-01 20:01:57Z BoShang\Administrator $
+ * 	$Id: User 72642 2009-01-01 20:01:57Z Honor\Administrator $
  *
  *  Revision History
  *  &lt;Date&gt;,			&lt;Who&gt;,			&lt;What&gt;
@@ -21,7 +23,8 @@ package com.honor.model;
  *
  * </pre>
  */
-public class User {
+public class User implements Serializable {
+
     private String userName;
     private String password;
 
