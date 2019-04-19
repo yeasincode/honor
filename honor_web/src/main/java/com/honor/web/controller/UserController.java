@@ -1,4 +1,4 @@
-package com.honor.web.com.honor.web.controller;
+package com.honor.web.controller;
 
 import com.honor.api.UserApi;
 import com.honor.model.User;
