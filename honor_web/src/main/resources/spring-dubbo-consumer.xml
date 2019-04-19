@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:dubbo="http://dubbo.apache.org/schema/dubbo"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+       http://dubbo.apache.org/schema/dubbo https://dubbo.apache.org/schema/dubbo/dubbo.xsd">
+
+    <dubbo:application name="honor_web"/>
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2182" check="true" wait="300000" file="dubbo-registry.cache" />
+    <dubbo:reference id="userApi" interface="com.honor.api.UserApi" check="false" />
+</beans>
+
