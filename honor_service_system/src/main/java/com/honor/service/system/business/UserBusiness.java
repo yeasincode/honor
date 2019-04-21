@@ -1,8 +1,11 @@
 package com.honor.service.system.business;
 
 import com.honor.api.UserApi;
+import com.honor.jdbc.DatabaseManager;
 import com.honor.model.User;
 import org.springframework.stereotype.Component;
+
+import java.util.List;
 
 /**
  * <pre>
@@ -28,12 +31,16 @@ import org.springframework.stereotype.Component;
 @Component
 public class UserBusiness implements UserApi {
 
+    DatabaseManager databaseManager;
+
     @Override
     public User getUserById(String userId) {
-        User user =new User();
-        user.setPassword("32412");
-        user.setUserName("admin");
-        return user;
+//        User user =new User();
+//        user.setPassword("32412");
+//        user.setUserName("admin");
+        List<User> list=databaseManager.getModelWhere("username","yeasin",User.class);
+        return list.get(0);
+//        return user;
     }
 }
 
