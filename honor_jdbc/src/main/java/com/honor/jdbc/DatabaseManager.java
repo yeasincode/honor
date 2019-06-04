@@ -12,6 +12,6 @@ public class DatabaseManager {
 
     public <T> List<T> getModelWhere(String name, String value, Class<T> clazz)
     {
-        return (List<T>) jdbcTemplate.query("select * from user where "+name+"='"+value+"'",new ColumnMapRowMapper());
+
     }
 }
