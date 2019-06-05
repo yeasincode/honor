@@ -1,5 +1,8 @@
 package com.honor.jdbc;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 
 /**
@@ -23,16 +26,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
  *
  * </pre>
  */
+@Component
 public class DatabaseManager {
 
-    @AutoWired
+    @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public <T> T getModel(int id,Class<T> clazz)
-    {
-        String table=clazz.getName();
-       String sql=String.format("select * from where %s id=%d ",table,id);
-       jdbcTemplate.queryForObject(sql,clazz);
+    public <T> T getModel(int id, Class<T> clazz) {
+        String table = clazz.getSimpleName();
+        String sql = String.format("select * from %s where id=%d ", table, id);
+        return jdbcTemplate.queryForObject(sql, clazz);
     }
 }
 

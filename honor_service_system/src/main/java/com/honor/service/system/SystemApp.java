@@ -3,6 +3,7 @@ package com.honor.service.system;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ImportResource;
 
 
@@ -27,12 +28,14 @@ import org.springframework.context.annotation.ImportResource;
  *
  * </pre>
  */
-@SpringBootApplication(exclude = DataSourceAutoConfiguration.class)
+@SpringBootApplication(scanBasePackages = "com.honor")
 @ImportResource({"classpath:spring-dubbo-provider.xml"})
 public class SystemApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(SystemApp.class, args);
+       ApplicationContext applicationContext= SpringApplication.run(SystemApp.class, args);
+       String[] names=applicationContext.getBeanDefinitionNames();
+       System.out.println(names.length);
 
         try {
             System.in.read();

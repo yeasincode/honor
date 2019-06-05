@@ -6,8 +6,6 @@ import com.honor.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import java.util.List;
-
 /**
  * <pre>
  *
@@ -40,9 +38,8 @@ public class UserBusiness implements UserApi {
 //        User user =new User();
 //        user.setPassword("32412");
 //        user.setUserName("admin");
-        List<User> list=databaseManager.getModelWhere("username","yeasin",User.class);
-        return list.get(0);
-//        return user;
+        User user = databaseManager.getModel(1, User.class);
+        return user;
     }
 }
 
