@@ -6,14 +6,12 @@
  */
 
 buildscript {
-    ext {
-        springBootVersion = '2.1.4.RELEASE'
-    }
     repositories {
         jcenter()
     }
+
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
     }
 }
 
@@ -25,6 +23,8 @@ allprojects {
     tasks.withType(JavaCompile) {
         options.encoding = "UTF-8"
     }
+
+    apply from: rootProject.getRootDir().getAbsolutePath() + "/app.gradle"
 }
 
 
@@ -34,18 +34,41 @@ subprojects {
 
 }
 
+configure(subprojects.findAll { it.name.endsWith('_web') }) {
+    apply plugin: 'org.springframework.boot'
+
+    dependencies {
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: project.springBootVersion
+    }
+
+    jar {
+        String appName = project.name.split('_').last().capitalize() + 'App'
+        String mainClass = "com.honor.web." + appName
+        print("build web jar:" + appName)
+        manifest {
+            attributes(
+                    "Manifest-Version": 1.0,
+                    "Main-Class": mainClass)
+        }
+        from { configurations.compile.collect { it.isDirectory() ? it : zipTree(it) } }
+        into('assets') {
+            from 'assets'
+        }
+    }
+}
+
 configure(subprojects.findAll { it.name.contains('_service_') }) {
 
     apply plugin: 'org.springframework.boot'
 
     dependencies {
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: '2.1.4.RELEASE'
+        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: project.springBootVersion
     }
 
     jar {
         String appName = project.name.split('_').last().capitalize() + 'App'
         String mainClass = "com.honor.service.system." + appName
-        print("build service jar:"+appName)
+        print("build service jar:" + appName)
         manifest {
             attributes(
                     "Manifest-Version": 1.0,

@@ -3,6 +3,7 @@ dependencies {
     compile project(':honor_parent')
     compile project(':honor_api')
     compile project(':honor_core')
+    compile project(':honor_jdbc')
 }
 
 

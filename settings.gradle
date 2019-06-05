@@ -13,4 +13,5 @@ include 'honor_core'
 include 'honor_parent'
 include 'honor_service_system'
 include 'honor_web'
+include 'honor_jdbc'
 

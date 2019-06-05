@@ -1,7 +1,9 @@
 package com.honor.service.system.business;
 
 import com.honor.api.UserApi;
+import com.honor.jdbc.DatabaseManager;
 import com.honor.model.User;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -27,6 +29,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class UserBusiness implements UserApi {
+
+    @Autowired
+    DatabaseManager databaseManager;
 
     @Override
     public User getUserById(String userId) {

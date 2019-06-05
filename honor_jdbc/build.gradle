@@ -1,0 +1,4 @@
+dependencies {
+    compile group: 'org.springframework', name: 'spring-jdbc', version:rootProject.springVersion
+    compile group: 'mysql', name: 'mysql-connector-java', version:rootProject.mysqlVersion
+}

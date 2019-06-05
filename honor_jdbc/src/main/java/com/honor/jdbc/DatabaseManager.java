@@ -1,4 +1,8 @@
+package com.honor.jdbc;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import javax.xml.ws.FaultAction;
+
 
 /**
  * <pre>
@@ -22,7 +26,16 @@ import org.springframework.jdbc.core.JdbcTemplate;
  * </pre>
  */
 public class DatabaseManager {
+
+    @AutoWired
     JdbcTemplate jdbcTemplate;
+
+    public <T> T getModel(int id,Class<T> clazz)
+    {
+        String table=clazz.getName();
+       String sql=String.format("select * from where %s id=%d ",table,id);
+       jdbcTemplate.queryForObject(sql,clazz);
+    }
 }
 
 /*
