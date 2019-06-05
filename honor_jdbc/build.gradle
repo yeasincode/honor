@@ -1,4 +1,8 @@
 dependencies {
-    compile group: 'org.springframework', name: 'spring-jdbc', version:rootProject.springVersion
-    compile group: 'mysql', name: 'mysql-connector-java', version:rootProject.mysqlVersion
+//compile group: 'org.springframework', name: 'spring-jdbc', version:rootProject.springVersion
+//compile group: 'mysql', name: 'mysql-connector-java', version:rootProject.mysqlVersion
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+//compile 'com.alibaba:druid-spring-boot-starter:1.1.10'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.16'
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jdbc', version: '2.1.4.RELEASE'
 }

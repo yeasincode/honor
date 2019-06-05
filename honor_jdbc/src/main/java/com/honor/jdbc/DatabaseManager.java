@@ -1,8 +1,6 @@
 package com.honor.jdbc;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import javax.xml.ws.FaultAction;
-
 
 /**
  * <pre>
