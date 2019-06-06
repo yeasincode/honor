@@ -1,9 +1,13 @@
 package com.honor.service.system;
 
+import com.honor.spring.config.AopConfig;
 import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
 import org.springframework.context.annotation.PropertySource;
 
@@ -32,6 +36,7 @@ import org.springframework.context.annotation.PropertySource;
 @SpringBootApplication(scanBasePackages = "com.honor")
 @PropertySource({"classpath:database.properties"})
 @ImportResource({"classpath:spring-dubbo-provider.xml"})
+@Import(AopConfig.class)
 public class SystemApp {
 
     public static void main(String[] args) {
