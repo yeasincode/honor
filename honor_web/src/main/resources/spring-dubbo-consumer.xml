@@ -5,9 +5,13 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
        http://dubbo.apache.org/schema/dubbo https://dubbo.apache.org/schema/dubbo/dubbo.xsd">
 
-    <dubbo:application name="honor_web" />
-    <dubbo:registry protocol="zookeeper" address="localhost:2182"  />
-    <dubbo:protocol name="dubbo" host="localhost" port="20770"/>
+    <dubbo:application name="honor_web">
+        <dubbo:parameter key="qos.enable" value="true"/>
+        <dubbo:parameter key="qos.port" value="33333"/>
+        <dubbo:parameter key="qos.accept.foreign.ip" value="false"/>
+    </dubbo:application>
+    <dubbo:registry protocol="zookeeper" address="127.0.0.1:2182" check="true" wait="300000" file="dubbo-registry-web.cache"/>
+    <dubbo:protocol name="dubbo" host="127.0.0.1" port="20771"/>
     <dubbo:reference id="userApi" interface="com.honor.api.UserApi" check="false" />
 </beans>
 

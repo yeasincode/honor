@@ -5,6 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.context.annotation.PropertySource;
 
 
 /**
@@ -29,14 +30,14 @@ import org.springframework.context.annotation.ImportResource;
  * </pre>
  */
 @SpringBootApplication(scanBasePackages = "com.honor")
+@PropertySource({"classpath:database.properties"})
 @ImportResource({"classpath:spring-dubbo-provider.xml"})
 public class SystemApp {
 
     public static void main(String[] args) {
        ApplicationContext applicationContext= SpringApplication.run(SystemApp.class, args);
-       String[] names=applicationContext.getBeanDefinitionNames();
-       System.out.println(names.length);
-
+//       String[] names=applicationContext.getBeanDefinitionNames();
+//       System.out.println(names.length);
         try {
             System.in.read();
         } catch (Exception e) {

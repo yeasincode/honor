@@ -31,7 +31,6 @@ allprojects {
 subprojects {
     version = '1.0'
     apply plugin: 'java'
-
 }
 
 configure(subprojects.findAll{it.name.contains('jdbc')}){
@@ -65,7 +64,6 @@ configure(subprojects.findAll { it.name.contains('_service_') }) {
     apply plugin: 'org.springframework.boot'
 
     dependencies {
-        compile group: 'org.springframework.boot', name: 'spring-boot-starter', version: project.springBootVersion
     }
 
     jar {

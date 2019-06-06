@@ -1,6 +1,7 @@
 package com.honor.jdbc;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
@@ -35,7 +36,7 @@ public class DatabaseManager {
     public <T> T getModel(int id, Class<T> clazz) {
         String table = clazz.getSimpleName();
         String sql = String.format("select * from %s where id=%d ", table, id);
-        return jdbcTemplate.queryForObject(sql, clazz);
+        return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(clazz));
     }
 }
 
