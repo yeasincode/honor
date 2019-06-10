@@ -1,22 +1,30 @@
 package com.honor.spring.config;
 
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
+import org.springframework.context.annotation.Configuration;
 
 @Aspect
-@Component
+@Configuration
 public class AopConfig {
 
-    @Pointcut("execution(* com.honor.*.business.*.*(..))")
+    @Pointcut("execution(public * com.honor..business.*.*(..)))")
     public void executeService() {
         System.out.println("-----------executeService----------------");
     }
 
     @Around("executeService()")
-    public void aroundExecuteService() {
+    public Object aroundExecuteService(ProceedingJoinPoint proceedingJoinPoint) {
         System.out.println("-----------aroundExecuteService----------------");
+        try {
+            Object proceed = proceedingJoinPoint.proceed(proceedingJoinPoint.getArgs());
+            return proceed;
+        } catch (Throwable throwable) {
+            throwable.printStackTrace();
+        }
+        return null;
     }
 
     @Pointcut("execution(* com.honor.*.daoImpl.*.*(..))")
@@ -24,7 +32,7 @@ public class AopConfig {
         System.out.println("-----------executeDao----------------");
     }
 
-    @Around("executeService()")
+    @Around("executeDao()")
     public void aroundExecuteDao() {
         System.out.println("-----------aroundExecuteDao----------------");
     }

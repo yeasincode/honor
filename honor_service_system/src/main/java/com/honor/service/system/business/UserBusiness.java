@@ -1,8 +1,11 @@
 package com.honor.service.system.business;
 
 import com.honor.api.UserApi;
+import com.honor.dubbo.AppDubbo;
 import com.honor.jdbc.DatabaseManager;
 import com.honor.model.User;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,16 +31,15 @@ import org.springframework.stereotype.Component;
  * </pre>
  */
 @Component
-public class UserBusiness implements UserApi {
+public class UserBusiness extends AppDubbo implements UserApi {
+
+    private static Log log=LogFactory.getLog(UserBusiness.class);
 
     @Autowired
     DatabaseManager databaseManager;
 
     @Override
     public User getUserById(String userId) {
-//        User user =new User();
-//        user.setPassword("32412");
-//        user.setUserName("admin");
         User user = databaseManager.getModel(1, User.class);
         return user;
     }

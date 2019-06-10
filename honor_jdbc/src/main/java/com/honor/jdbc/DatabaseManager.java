@@ -34,7 +34,7 @@ public class DatabaseManager {
     JdbcTemplate jdbcTemplate;
 
     public <T> T getModel(int id, Class<T> clazz) {
-        String table = clazz.getSimpleName();
+        String table = clazz.getSimpleName().toLowerCase();
         String sql = String.format("select * from %s where id=%d ", table, id);
         return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(clazz));
     }
