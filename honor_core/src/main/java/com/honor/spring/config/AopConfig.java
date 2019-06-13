@@ -3,13 +3,14 @@ package com.honor.spring.config;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 @Aspect
-@Component
+@Configuration
 public class AopConfig {
 
-    @Pointcut("execution(* com.honor.*.business.*.*(..))")
+    @Pointcut("execution(* com.honor..business.*.*(..))")
     public void executeService() {
         System.out.println("-----------executeService----------------");
     }
