@@ -33,14 +33,14 @@ subprojects {
     apply plugin: 'java'
 }
 
-configure(subprojects.findAll{it.name.contains('jdbc')}){
-}
 
 configure(subprojects.findAll { it.name.endsWith('_web') }) {
     apply plugin: 'org.springframework.boot'
 
     dependencies {
         compile group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: project.springBootVersion
+        compile project(':honor_core')
+        compile project(':honor_dubbo')
     }
 
     jar {
@@ -64,6 +64,8 @@ configure(subprojects.findAll { it.name.contains('_service_') }) {
     apply plugin: 'org.springframework.boot'
 
     dependencies {
+        compile project(':honor_core')
+        compile project(':honor_dubbo')
     }
 
     jar {

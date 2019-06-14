@@ -1,11 +1,13 @@
 package com.honor.service.system;
 
 import com.honor.spring.config.AopConfig;
+import com.honor.spring.ioc.AppContainer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.ImportAutoConfiguration;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.ImportResource;
@@ -41,8 +43,9 @@ public class SystemApp {
 
     public static void main(String[] args) {
        ApplicationContext applicationContext= SpringApplication.run(SystemApp.class, args);
-//       String[] names=applicationContext.getBeanDefinitionNames();
-//       System.out.println(names.length);
+       AppContainer container=AppContainer.container();
+       container.setApplicationContext(applicationContext);
+
         try {
             System.in.read();
         } catch (Exception e) {

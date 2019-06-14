@@ -5,6 +5,8 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 
 /**
  * <pre>
@@ -33,10 +35,16 @@ public class DatabaseManager {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
-    public <T> T getModel(int id, Class<T> clazz) {
-        String table = clazz.getSimpleName();
+    public <T> T get(int id, Class<T> clazz) {
+        String table = clazz.getSimpleName().toLowerCase();
         String sql = String.format("select * from %s where id=%d ", table, id);
-        return jdbcTemplate.queryForObject(sql,new BeanPropertyRowMapper<>(clazz));
+        return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(clazz));
+    }
+
+
+    public <T> List<T> getList() {
+
+        return null;
     }
 }
 

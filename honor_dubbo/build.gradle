@@ -1,9 +1,7 @@
 dependencies {
-    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile project(':honor_core')
     compile group: 'org.apache.zookeeper', name: 'zookeeper', version: '3.4.13', ext: 'pom'
     compile group: 'org.apache.curator', name: 'curator-framework', version: '2.13.0'
     compile group: 'org.apache.curator', name: 'curator-recipes', version: '2.13.0'
-    compile group: 'org.apache.logging.log4j', name: 'log4j-core', version: '2.11.2'
-    //dubbo
     compile group: 'org.apache.dubbo', name: 'dubbo', version: '2.7.1'
 }
